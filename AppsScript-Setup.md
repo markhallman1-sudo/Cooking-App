@@ -12,7 +12,7 @@ The GitHub Pages copy and the original published Site save data only in the brow
    - **Execute as:** Me
    - **Who has access:** Only myself
 6. Deploy, authorize if prompted, and copy the web app URL ending in `/exec`.
-7. Open that same URL on your laptop and phone. Sign in to the same Google account on each. The first device copies its existing local pantry and plan into the shared kitchen; the other device loads that shared copy.
+7. Open that same URL on your laptop and phone. Sign in to the same Google account on each. The first Apps Script visit initializes the shared kitchen; the other device loads that shared copy. The old ChatGPT Site and GitHub Pages copy use separate browser storage, so their existing edits cannot be read automatically by the Apps Script version.
 
 The app keeps a local cache too, so it remains usable if you briefly lose connection and will sync again when the Apps Script app is open online. It checks for changes from the other device periodically and when you return to the tab.
 
