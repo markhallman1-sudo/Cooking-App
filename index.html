@@ -103,7 +103,7 @@
 <script>
 const pantrySeed=[
  ["Produce",["Mini cucumbers","Lemons","Limes","Oranges","Grapefruit","Red bell pepper","Orange bell pepper","Yellow bell pepper","Green bell pepper","Mini sweet peppers","Poblano pepper","Jalapeño pepper","Serrano pepper","Anaheim pepper","Hatch green chile","Fresno pepper","Cubanelle pepper","Banana peppers","Tomatoes","Roma tomatoes","Cherry tomatoes","Grape tomatoes","Heirloom tomatoes","Red onion","Yellow onion","White onion","Shallots","Green onions","Leeks","Garlic","Ginger","Broccoli","Carrots","Sweet potatoes","Russet potatoes","Yukon Gold potatoes","Red potatoes","Spinach","Kale","Arugula","Spring mix","Green cabbage","Red cabbage","Avocado","Mango","Apples","Pears","Peaches","Grapes","Blueberries","Strawberries","Blackberries","Raspberries","Cranberries","Gooseberries","Boysenberries","Frozen blueberries","Frozen strawberries","Frozen raspberries","Frozen mixed berries","Frozen cherries","Mushrooms","Cremini mushrooms","Shiitake mushrooms","Portobello mushrooms","Zucchini","Yellow summer squash","Butternut squash","Cauliflower","Green beans","Asparagus","Celery"]],
- ["Herbs",["Cilantro","Parsley","Basil","Mint","Rosemary","Thyme","Chives","Dill","Sage","Tarragon","Oregano"]],
+ ["Herbs",["Cilantro","Parsley","Basil","Mint","Rosemary","Thyme","Chives","Sage","Tarragon","Oregano"]],
  ["Protein",["Chicken breast","Chicken thighs","Ground turkey","Ground chicken","Fish","Salmon","Cod","Tilapia","Lean ground beef","Pork loin","Pork chops","Eggs","Tofu","Tempeh"]],
  ["Beans & legumes",["Black beans","Pinto beans","Kidney beans","Cannellini beans","Great Northern beans","Navy beans","Butter beans","Chickpeas","Green lentils","Brown lentils","Red lentils","Refried beans","Black-eyed peas","Split peas","Edamame"]],
  ["Dairy",["Greek yogurt","Feta","Goat cheese","Cheddar","Monterey Jack","Pepper Jack","Cotija","Queso fresco","Mozzarella","Fresh mozzarella","Parmesan","Pecorino Romano","Ricotta","Sour cream","Cream cheese"]],
@@ -124,6 +124,7 @@ function mergePantryItems(items){
  const merged=[],positions=new Map();
  (Array.isArray(items)?items:[]).forEach(raw=>{
   if(!raw||typeof raw.name!=="string"||!raw.name.trim())return;
+  if(raw.name.trim().toLowerCase()==="dill"&&raw.cat==="Herbs")return;
   const key=raw.name.trim().toLowerCase(),known=canonical.get(key),at=positions.get(key);
   if(at!==undefined){if(raw.on)merged[at].on=true;if(!merged[at].qty&&raw.qty)merged[at].qty=raw.qty;return}
   const item=known?{...raw,name:known.name,cat:known.cat,on:!!raw.on,qty:raw.qty||""}:{...raw,name:raw.name.trim(),cat:raw.cat||"Other",on:!!raw.on,qty:raw.qty||""};
