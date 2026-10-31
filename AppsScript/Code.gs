@@ -88,7 +88,7 @@ function fetchAppHtml_() {
   }
 
   const html = response.getContentText("UTF-8");
-  if (!html || !/<html[\\s>]/i.test(html) || !html.includes("</html>")) {
+  if (!html || !html.toLowerCase().includes("<html") || !html.toLowerCase().includes("</html>")) {
     throw new Error("The GitHub Pages address did not return the Pantry & Plenty HTML page.");
   }
   return html;
