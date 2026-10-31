@@ -161,14 +161,14 @@ function firstAvailable(names,available){return names.find(n=>available.has(n))|
 function unique(a){return [...new Set(a.filter(Boolean))]}
 function buildRecipe(){
  const profile=profiles[cuisine]||profiles["Flexible / surprise me"];
- const items=unique(basketInput.split(/[\\n,;]+/).map(x=>x.trim()).filter(Boolean));
+ const items=unique(basketInput.split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean));
  if(!items.length){$("#recipe-card").classList.add("visible");$("#recipe-card").innerHTML='<div class="empty"><h2>Add your ingredients</h2><p>Type the ingredients you want to cook with, then build a meal around the whole list.</p></div>';return}
  const lower=n=>n.toLocaleLowerCase();
- const proteinRx=/\\b(chicken|turkey|duck|pork|beef|steak|lamb|veal|bison|venison|salmon|cod|tilapia|trout|halibut|haddock|pollock|mahi|tuna|swordfish|snapper|catfish|sea bass|flounder|branzino|fish|shrimp|prawns|scallops?|mussels?|clams?|oysters?|crab|lobster|tofu|tempeh|eggs?|sausage|bacon|ham)\\b/i;
- const baseRx=/\\b(rice|pasta|noodles?|tortillas?|bread|couscous|quinoa|farro|barley|polenta|potatoes|sweet potatoes|gnocchi|bulgur|orzo)\\b/i;
- const aromaticRx=/\\b(garlic|onions?|shallots?|ginger|scallions?|green onions?)\\b/i;
- const freshRx=/\\b(avocado|cilantro|parsley|basil|mint|chives?|dill|lemon|lime|arugula|lettuce|spinach|cucumber)\\b/i;
- const vegRx=/\\b(asparagus|broccoli|brussels sprouts|cabbage|carrots?|cauliflower|celery|corn|eggplant|fennel|green beans|kale|leeks?|mushrooms?|parsnips?|peppers?|chiles?|chili|zucchini|squash|tomatoes?|radishes|spinach|greens)\\b/i;
+ const proteinRx=/\b(chicken|turkey|duck|pork|beef|steak|lamb|veal|bison|venison|salmon|cod|tilapia|trout|halibut|haddock|pollock|mahi|tuna|swordfish|snapper|catfish|sea bass|flounder|branzino|fish|shrimp|prawns|scallops?|mussels?|clams?|oysters?|crab|lobster|tofu|tempeh|eggs?|sausage|bacon|ham)\b/i;
+ const baseRx=/\b(rice|pasta|noodles?|tortillas?|bread|couscous|quinoa|farro|barley|polenta|potatoes|sweet potatoes|gnocchi|bulgur|orzo)\b/i;
+ const aromaticRx=/\b(garlic|onions?|shallots?|ginger|scallions?|green onions?)\b/i;
+ const freshRx=/\b(avocado|cilantro|parsley|basil|mint|chives?|dill|lemon|lime|arugula|lettuce|spinach|cucumber)\b/i;
+ const vegRx=/\b(asparagus|broccoli|brussels sprouts|cabbage|carrots?|cauliflower|celery|corn|eggplant|fennel|green beans|kale|leeks?|mushrooms?|parsnips?|peppers?|chiles?|chili|zucchini|squash|tomatoes?|radishes|spinach|greens)\b/i;
  const proteins=items.filter(n=>proteinRx.test(n));
  const bases=items.filter(n=>baseRx.test(n)&&!proteins.includes(n));
  const aromatics=items.filter(n=>aromaticRx.test(n)&&!proteins.includes(n));
